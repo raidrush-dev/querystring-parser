@@ -18,7 +18,7 @@
 
 "use strict";
 
-var QueryString = (function(undefiend) {
+var QueryString = (function(undefined) {
   var T_ASSIGN    = 1,
       T_ARR_OPEN  = 2,
       T_ARR_CLOSE = 4,
