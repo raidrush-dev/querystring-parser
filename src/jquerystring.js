@@ -190,7 +190,7 @@ var JQueryString = (function(undefiend) {
       switch (token = this.next()) {
         case T_ARR_CLOSE:
           // alias for push() 
-          var key = host.push(null) - 1;
+          var key = host.push(this.init()) - 1;
           this.collect(host[key], host, key);
           break;
           
