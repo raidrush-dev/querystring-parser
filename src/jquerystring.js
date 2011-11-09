@@ -37,8 +37,6 @@ var JQueryString = (function(undefiend) {
       NUMBER_TYPE  = toString.call(0),
       BOOLEAN_TYPE = toString.call(true),
       DATE_TYPE    = toString.call(new Date);
-      
-  var EMPTY_STRING = "";
   
   // ------------------------
   // tokenizer
@@ -118,9 +116,6 @@ var JQueryString = (function(undefiend) {
   // ------------------------
   // decoder
   
-  var TYPE_OBJECT = 100,
-      TYPE_ARRAY  = 101;
-  
   var Decoder = {
     /**
      * parses the query-string
@@ -134,22 +129,19 @@ var JQueryString = (function(undefiend) {
       this.delim   = delim || '&';
       this.tokens  = Tokenizer.tokenize(query, delim);
       
-      // parse AST
-      this.ast = {};
+      var res = {};
       
+      // parse AST
       while (this.tokens.length) {
         this.expect(T_STRING);
         
         var name = this.next();
         
-        if (typeof this.ast[name] === "undefined")
-          this.ast[name] = this.init();
+        if (typeof res[name] === "undefined")
+          res[name] = this.init();
           
-        this.collect(this.ast[name], this.ast, name);
+        this.collect(res[name], res, name);
       }
-      
-      var res = this.ast;
-      delete this.ast;
       
       return res;
     },
