@@ -1,6 +1,6 @@
 QueryString is a fast QueryString parser for JavaScript.
 
-Is is possible to encode complex expressions 
+Is is possible to decode complex expressions 
 like "foo[0][bar]=bar&foo[0][baz]=1&foo[]=qrz".
 
 example:
@@ -11,7 +11,7 @@ QueryString.decode(query);
 // -> { "foo": [ null, { "foo": [ [ null, null, 1] ] } ], "bar": 1 }
 --------------------------------------------------------------------
 
-And it is possible to decode complex object-structures 
+And it is possible to encode complex object-structures 
 to query-strings as well!
 
 example:
