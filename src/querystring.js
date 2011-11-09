@@ -1,5 +1,5 @@
 /*!
- * JQueryString - Standalone query-string parser for JavaScript
+ * QueryString - Standalone query-string parser for JavaScript
  * Copyright 2011 murdoc <murdoc@raidrush.org>
  *
  * This library is free software: you can redistribute it and/or
@@ -18,7 +18,7 @@
 
 "use strict";
 
-var JQueryString = (function(undefiend) {
+var QueryString = (function(undefiend) {
   var T_ASSIGN    = 1,
       T_ARR_OPEN  = 2,
       T_ARR_CLOSE = 4,

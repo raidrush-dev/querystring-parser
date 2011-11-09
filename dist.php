@@ -6,13 +6,13 @@
  * just execute it and you're done
  */
  
-print "\nErstelle jquerystring.js in /dist ... ";
+print "\nErstelle querystring.js in /dist ... ";
 
-$dist = fopen(__DIR__ . '/dist/jquerystring.js', 'w');
-build($dist, 'jquerystring.js');
+$dist = fopen(__DIR__ . '/dist/querystring.js', 'w');
+build($dist, 'querystring.js');
 fclose($dist);
 
-print "\n\njnode.js wurde erfolgreich erstellt!\n\n---\n\nVerarbeite weitere Module ...\n\n";
+print "\n\nquerystring.js wurde erfolgreich erstellt!\n\n---\n\nVerarbeite weitere Module ...\n\n";
 
 // edit path
 $yui = 'D:/Coding/YUI Compressor/build/yuicompressor-2.4.6.jar';
@@ -20,7 +20,7 @@ apply_yui($yui);
 
 // edit path
 $jdoc = 'D:/Coding/jsdoc-toolkit';
-//apply_jdoc($jdoc);
+apply_jdoc($jdoc);
 
 // ------------------------------
 
@@ -35,7 +35,7 @@ function apply_jdoc($path) {
   print '-> Erstelle Dokumenation in ' . __DIR__ . "/doc\n";
   
   $cmd = 'java -jar "' . $path . '/jsrun.jar"  "' . $path . '/app/run.js" -a -d="' 
-    . __DIR__ . '/doc" -t="' . $path . '/templates/jsdoc" "' . __DIR__ . '/dist/jnode.js"';
+    . __DIR__ . '/doc" -t="' . $path . '/templates/jsdoc" "' . __DIR__ . '/dist/querystring.js"';
     
   `$cmd >> nul`;
   
@@ -50,10 +50,10 @@ function apply_yui($path) {
     return;
   }
   
-  print '-> Minimiere Code nach ' . __DIR__ . "/dist/jquerystring.min.js\n";
+  print '-> Minimiere Code nach ' . __DIR__ . "/dist/querystring.min.js\n";
   
   $cmd = 'java -jar "' . $path . '" -o "' . __DIR__ 
-    . '/dist/jquerystring.min.js" "' . __DIR__ . '/dist/jquerystring.js"';
+    . '/dist/querystring.min.js" "' . __DIR__ . '/dist/querystring.js"';
     
   `$cmd >> nul`;
   

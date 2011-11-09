@@ -1,4 +1,4 @@
-JQueryString is a fast QueryString parser for JavaScript.
+QueryString is a fast QueryString parser for JavaScript.
 
 Is is possible to encode complex expressions 
 like "foo[0][bar]=bar&foo[0][baz]=1&foo[]=qrz".
@@ -7,7 +7,7 @@ example:
 --------------------------------------------------------------------
 var query = "foo[1][foo][][2]=1&bar=1";
 
-JQueryString.decode(query);
+QueryString.decode(query);
 // -> { "foo": [ null, { "foo": [ [ null, null, 1] ] } ], "bar": 1 }
 --------------------------------------------------------------------
 
@@ -18,17 +18,17 @@ example:
 --------------------------------------------------------------------
 var obj = { foo: [ { "bar": [ 1, 2, { "bar": 1 } ] } ] };
 
-JQueryString.encode(obj);
+QueryString.encode(obj);
 // -> foo[0][bar][0]=1&foo[0][bar][1]=2&foo[0][bar][2][bar]=1
 --------------------------------------------------------------------
 
 This component has no dependencies and defines 
-one extra global-variable (called JQueryString)
+one extra global-variable (called QueryString)
 
 API:
 
-JQueryString.decode(string, delim = "&")
+QueryString.decode(string, delim = "&")
 -> Decodes a query-string to an object.
 
-JQueryString.encode(object, delim = "&")
+QueryString.encode(object, delim = "&")
 -> Encodes an object to a query-string.
