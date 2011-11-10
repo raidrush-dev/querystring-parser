@@ -350,13 +350,14 @@ var QueryString = (function(undefined) {
     {
       this.delim = delim || '&';
       
-      var result = [];
+      var result = [], value;
       
       for (var i in object) {
         if (!object.hasOwnProperty(i))
           continue;
-          
-        result.push(this.serialize(object[i], i));
+        
+        if ((value = this.serialize(object[i], i)) !== "")
+          result.push(value);
       }
       
       return result.join(this.delim);
@@ -370,15 +371,14 @@ var QueryString = (function(undefined) {
      * @returns {String}
      */
     serialize: function serialize(value, label)
-    {      
+    {            
+      if (typeof value === "undefined" || value === null)
+        return "";
+        
       switch (toString.call(value)) { 
         case DATE_TYPE:
-          return label + "=" + (+value);          
-        
-        case undefined:
-        case null:
-          value = "";
-        
+          return label + "=" + (+value);         
+          
         case STRING_TYPE:
           value = this.encode(value);
           
@@ -406,17 +406,30 @@ var QueryString = (function(undefined) {
      */
     access: function access(value, label)
     {
-      var result = [];
+      var result = [], value;
       
       if (toString.call(value) === ARRAY_TYPE)
         for (var i = 0, l = value.length; i < l; ++i)
-          result.push(this.serialize(value[i], label + "[" + i  + "]"));
+          this.handle(result, label, value[i], i);
       else
         for (var i in value)
           if (value.hasOwnProperty(i))
-            result.push(this.serialize(value[i], label + "[" + i + "]"));
+            this.handle(result, label, value[i], i);
             
       return result.join(this.delim);
+    },
+    
+    /**
+     * serializes an array/object property
+     *
+     * @
+     */
+    handle: function handle(stack, label, value, prop)
+    {
+      var res;
+      
+      if ((res = this.serialize(value, label + "[" + prop  + "]")) !== "")
+        stack.push(res);
     },
     
     /**
