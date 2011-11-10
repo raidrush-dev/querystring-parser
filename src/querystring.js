@@ -406,7 +406,7 @@ var QueryString = (function(undefined) {
      */
     access: function access(value, label)
     {
-      var result = [], value;
+      var result = [];
       
       if (toString.call(value) === ARRAY_TYPE)
         for (var i = 0, l = value.length; i < l; ++i)
