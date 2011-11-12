@@ -18,7 +18,7 @@
 
 "use strict";
 
-var QueryString = (function(undefined) {
+(function(undefined) {
   var T_ASSIGN    = 1,
       T_ARR_OPEN  = 2,
       T_ARR_CLOSE = 4,
@@ -447,7 +447,7 @@ var QueryString = (function(undefined) {
   // ------------------------
   // exports
   
-  return {
+  var exports = {
     /**
      * decodes a query-string
      *
@@ -471,5 +471,11 @@ var QueryString = (function(undefined) {
     {
       return Encoder.parse(object, delim);
     }
-  }
+  };
+  
+  if (typeof module !== "undefined")
+    module.exports = exports;
+  
+  if (typeof window !== "undefined")
+    window.QueryString = exports;
 })();
