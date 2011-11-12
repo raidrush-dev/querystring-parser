@@ -1,0 +1,11 @@
+{ "name" : "querystring"
+, "description" : "An advanced query-string parser"
+, "url" : "https://github.com/raidrush-dev/querystring-parser"
+, "keywords" : ["util", "url", "querystring"]
+, "author" : "murdoc <murdoc@raidrsuh.org>"
+, "contributors" : []
+, "dependencies" : []
+, "lib" : "."
+, "main" : "querystring.js"
+, "version" : "0.1"
+}
