@@ -76,7 +76,7 @@
             case '=':
               tokens.push(T_ASSIGN);
               tokens.push(T_STRING);
-              tokens.push(this.data.substr(21));
+              tokens.push(this.data.substr(this.offs));
               this.offs = this.slen;
               break;
               
